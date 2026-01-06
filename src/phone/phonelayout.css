@@ -1,0 +1,256 @@
+:root {
+  /* Root variables: theme colors used across the layout */
+  --phone-body: #0b0b0b;
+  --glass-highlight: rgba(255,255,255,0.08);
+  --status-text: #fff;
+}
+
+.phone-frame.light {
+  /* Light theme overrides for phone appearance */
+  --phone-body: #f2f2f2;
+  --glass-highlight: rgba(255,255,255,0.35);
+  --status-text: #000;
+}
+
+
+
+.phone-screen {
+  /* Makes the screen vertically scrollable with smooth touch scrolling */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.phone-wrapper {
+  /* Centers the phone in its container */
+  display: flex;
+  justify-content: center;
+}
+
+.phone-frame {
+  /* Outer phone frame (bezel, size, and shadow) */
+  width: 290px;          /* iPhone 14 width */
+  height: 94.5vh;         /* iPhone 14 height */
+  padding: 12px;         /* bezel thickness */
+  background: black;
+  border-radius: 40px;
+  background: var(--phone-body);
+
+  position: relative;
+
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1.5px rgba(255,255,255,0.08);
+}
+
+.phone-screen {
+  /* Inner screen surface (content area) */
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 36px;
+  overflow: hidden;      /* 🔒 keeps content inside */
+  position: relative;
+}
+.phone-screen {
+  /* Ensures positioned children align to the screen */
+  position: relative;
+}
+
+.phone-notch {
+  /* Top notch area (speaker/camera cutout) */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+  height: 30px;
+  background: black;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 2;
+}
+.phone-screen {
+  /* Prevents visual overflow from content */
+  overflow: hidden;
+}
+.phone-screen {
+  /* Scroll settings and scrollbar hiding for a clean look */
+  height: 100%;
+  width: 100%;
+  border-radius: 36px;
+  background: white;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+}
+.phone-screen::-webkit-scrollbar {
+  display: none;
+}
+
+.phone-frame {
+  /* Additional frame shadow for depth */
+  
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 2px #1c1c1c;
+}
+
+.phone-notch {
+  /* Centered notch with space for camera and speaker */
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 160px;
+  height: 32px;
+
+  background: black;
+  border-radius: 0 0 20px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  z-index: 10;
+}
+.camera {
+  /* Small circular camera indicator inside the notch */
+  z-index: 11;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: inset 0 0 2px #ffffff;
+}
+
+.speaker {
+ 
+  /* Horizontal speaker element in the notch */
+  width: 40px;
+  height: 6px;
+  background: #1e1e1e;
+  border-radius: 3px;
+}
+.side-button {
+  /* Generic style for side buttons (power/volume) */
+  position: absolute;
+  background: #1c1c1c;
+  border-radius: 2px;
+}
+
+.side-button.power {
+  /* Power button on the right side of the frame */
+  right: -4px;
+  top: 180px;
+  width: 4px;
+  height: 80px;
+}
+
+.side-button.volume.up {
+  /* Upper volume button on the left side */
+  left: -4px;
+  top: 140px;
+  width: 4px;
+  height: 50px;
+}
+
+.side-button.volume.down {
+  /* Lower volume button on the left side */
+  left: -4px;
+  top: 200px;
+  width: 4px;
+  height: 50px;
+}
+
+.phone-notch {
+  /* Subtle shadow under the notch for depth */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.status-bar {
+  /* Top status bar (time, signal, battery area) */
+  position: absolute;
+  top: 25px;
+  left: 7px;
+  right: 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--status-text);
+  z-index: 30;
+}
+
+.status-icons {
+  /* Container for small status icons on the bar */
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.battery {
+  /* Small battery container showing charge level */
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 24px;
+  height: 12px;
+  border: 1.5px solid var(--status-text);
+  border-radius: 3px;
+  padding: 1px;
+  margin: auto;
+ 
+}
+
+.battery-fill {
+  /* Visual fill indicating battery percentage */
+  width: 70%;
+  height: 100%;
+  background: var(--status-text);
+  border-radius: 2px;
+}
+.dynamic-island {
+  /* Dynamic island area for notifications / interactions */
+  position: absolute;
+  top: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 120px;
+  height: 34px;
+  background: black;
+  border-radius: 20px;
+
+  z-index: 25;
+  transition: all 0.35s ease;
+}
+.dynamic-island.expanded {
+  /* Expanded state of the dynamic island */
+  width: 250px;
+  height: 80px;
+  border-radius: 30px;
+}
+.dynamic-island:hover {
+  /* Hover interaction sizing for dynamic island */
+  width: 260px;
+  height: 64px;
+  border-radius: 32px;
+}
+.dynamic-island:active {
+  /* Active (pressed) state for dynamic island */
+  width: 240px;
+  height: 72px;
+  border-radius: 28px;
+}
+
+.time-display {
+  /* Small fixed time display in the status area */
+  position: fixed;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--status-text);
+}
